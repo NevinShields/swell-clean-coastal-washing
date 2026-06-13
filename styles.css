@@ -671,21 +671,23 @@ button {
 /* ==========================================================================
    TRUST BAR (DRIFTWOOD / TROPICAL BEACH SIGNS)
    ========================================================================== */
+/* ==========================================================================
+   TRUST BAR (DRIFTWOOD / TROPICAL BEACH SIGNS)
+   ========================================================================== */
 .trust-bar-section {
     background-image: url('assets/trust-bar-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 100px 24px;
+    padding: 90px 24px 110px 24px;
     position: relative;
     z-index: 4;
-    box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 -10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 10px 30px rgba(0, 0, 0, 0.15), inset 0 -10px 30px rgba(0, 0, 0, 0.15);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Add an overlay to match the cartoon lighting and ensure page integration */
 .trust-bar-section::before {
     content: '';
     position: absolute;
@@ -693,7 +695,7 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(250, 250, 250, 0.2) 0%, rgba(2, 62, 138, 0.05) 50%, rgba(245, 230, 200, 0.2) 100%);
+    background: linear-gradient(180deg, rgba(250, 250, 250, 0.1) 0%, rgba(2, 62, 138, 0.05) 50%, rgba(245, 230, 200, 0.15) 100%);
     pointer-events: none;
     z-index: 1;
 }
@@ -704,7 +706,7 @@ button {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 45px;
     position: relative;
     z-index: 3;
 }
@@ -712,80 +714,163 @@ button {
 .trust-upper-row {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 35px;
     flex-wrap: wrap;
     width: 100%;
 }
 
 .trust-wooden-board {
-    flex: 0 1 320px;
+    flex: 0 1 315px;
+    width: 315px;
+    height: 200px;
+    background-image: url('assets/blank-board.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
+    align-items: flex-end;
     justify-content: center;
-    align-items: center;
     transform-origin: center top;
-    animation: soft-bobbing-wood 4s ease-in-out infinite alternate;
-    transition: transform var(--transition-fast);
-}
-
-.trust-wooden-board img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.25));
+    animation: soft-bobbing-wood 4.5s ease-in-out infinite alternate;
     transition: transform var(--transition-fast), filter var(--transition-fast);
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3));
 }
 
 .trust-wooden-board:hover {
-    transform: scale(1.05) rotate(2deg);
-}
-
-.trust-wooden-board:hover img {
-    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.35)) brightness(1.05);
+    transform: scale(1.05) rotate(2deg) translateY(2px);
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.42));
 }
 
 /* Offset bobbing phases so they hang dynamically */
 #trust-board-star { animation-delay: 0s; }
-#trust-board-shield { animation-delay: -1.2s; }
-#trust-board-hut { animation-delay: -2.4s; }
+#trust-board-shield { animation-delay: -1.4s; }
+#trust-board-hut { animation-delay: -2.8s; }
+
+.board-inner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 0 20px 28px 20px; /* offset the ropes at the top */
+    box-sizing: border-box;
+}
+
+.sign-vector-icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,0.25));
+    transition: transform 0.4s ease;
+}
+
+.trust-wooden-board:hover .sign-vector-icon {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+#trust-board-star:hover .starfish-icon {
+    filter: drop-shadow(0 0 8px rgba(255, 123, 84, 0.8));
+}
+#trust-board-shield:hover .shield-icon {
+    filter: drop-shadow(0 0 8px rgba(137, 194, 217, 0.8));
+}
+#trust-board-hut:hover .hut-icon {
+    filter: drop-shadow(0 0 8px rgba(163, 177, 138, 0.8));
+}
+
+.board-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.board-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #FFF8E7;
+    line-height: 1.1;
+    text-shadow: 2px 2px 2px rgba(45, 30, 20, 0.9), -1px -1px 0px rgba(45, 30, 20, 0.5);
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    letter-spacing: 0.5px;
+}
+
+.board-subtitle {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FFDE9E;
+    line-height: 1.1;
+    text-shadow: 2px 2px 2px rgba(45, 30, 20, 0.9);
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+}
 
 .trust-lower-row {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .trust-log-board {
     width: 100%;
-    max-width: 800px;
+    max-width: 805px;
+    height: 180px;
+    background-image: url('assets/blank-log.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     transform-origin: center center;
     animation: soft-sway-log 6s ease-in-out infinite alternate;
-    transition: transform var(--transition-fast);
-}
-
-.trust-log-board img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.3));
     transition: transform var(--transition-fast), filter var(--transition-fast);
+    filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.35));
 }
 
 .trust-log-board:hover {
-    transform: scale(1.03) translateY(-4px);
+    transform: scale(1.03) translateY(-4px) rotate(0.5deg);
+    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.45));
 }
 
-.trust-log-board:hover img {
-    filter: drop-shadow(0 18px 30px rgba(0, 0, 0, 0.4)) brightness(1.03);
+.log-inner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.check-shell-icon {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.trust-log-board:hover .check-shell-icon {
+    transform: scale(1.15) rotate(10deg);
+    filter: drop-shadow(0 0 10px rgba(255, 205, 163, 0.5));
+}
+
+.log-text {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #4A3C31;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.45), -1px -1px 1px rgba(0, 0, 0, 0.2);
 }
 
 /* Animations matching physics of hanging signs vs log lying on beach sand */
 @keyframes soft-bobbing-wood {
     0% { transform: translateY(0) rotate(-1.5deg); }
-    100% { transform: translateY(10px) rotate(1.5deg); }
+    100% { transform: translateY(8px) rotate(1.5deg); }
 }
 
 @keyframes soft-sway-log {
@@ -794,19 +879,58 @@ button {
 }
 
 /* Responsive adjustment for mobile screen stacking */
+@media (max-width: 992px) {
+    .trust-wooden-board {
+        flex: 0 1 290px;
+        width: 290px;
+        height: 184px; /* maintain aspect ratio */
+    }
+    .board-inner-content {
+        padding: 0 15px 24px 15px;
+    }
+    .board-title { font-size: 1.15rem; }
+    .board-subtitle { font-size: 0.88rem; }
+}
+
 @media (max-width: 768px) {
     .trust-bar-section {
-        padding: 60px 16px;
+        padding: 60px 16px 80px 16px;
     }
     .trust-upper-row {
         gap: 30px;
     }
-    .trust-wooden-board {
-        flex: 0 1 280px;
-    }
     .trust-log-board {
-        max-width: 100%;
+        max-width: 500px;
+        height: 112px; /* maintain 4.47:1 ratio */
     }
+    .log-text {
+        font-size: 1.4rem;
+    }
+    .check-shell-icon {
+        width: 48px;
+        height: 48px;
+    }
+    .log-inner-content {
+        padding: 0 20px;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-wooden-board {
+        width: 260px;
+        height: 165px; /* maintain ratio */
+    }
+    .board-inner-content {
+        padding: 0 12px 20px 12px;
+        gap: 8px;
+    }
+    .sign-vector-icon {
+        width: 42px;
+        height: 42px;
+    }
+    .board-title { font-size: 1.05rem; }
+    .board-subtitle { font-size: 0.8rem; }
 }
 
 /* ==========================================================================
