@@ -642,6 +642,66 @@ button {
     gap: 20px;
 }
 
+.hero-buttons .btn {
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-radius: var(--radius-sm); /* Sleek square-bevel look to match wooden boards rather than capsules */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons .btn i {
+    margin-left: 10px;
+    font-size: 1.05rem;
+    transition: transform 0.3s ease;
+}
+
+/* Sunset Sparkle sweep gradient button */
+.hero-buttons .btn-primary {
+    background: linear-gradient(135deg, #FF7B54 0%, #FFA07A 50%, #FF7B54 100%);
+    background-size: 200% auto;
+    border: 2px solid #FF7B54;
+    color: #FFFFFF;
+    box-shadow: 0 6px 20px rgba(255, 123, 84, 0.45), inset 0 1px 0 rgba(255,255,255,0.3);
+    transition: all 0.4s ease;
+}
+
+.hero-buttons .btn-primary:hover {
+    background-position: right center;
+    border-color: #FFA07A;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(255, 123, 84, 0.65);
+}
+
+.hero-buttons .btn-primary:hover i {
+    transform: translateX(4px) scale(1.15);
+}
+
+/* Sea-Glass overlay button */
+.hero-buttons .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #FFFFFF;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transition: all 0.4s ease;
+}
+
+.hero-buttons .btn-secondary:hover {
+    background: linear-gradient(135deg, rgba(144, 224, 239, 0.3) 0%, rgba(0, 119, 182, 0.45) 100%);
+    border-color: var(--seafoam);
+    color: #FFFFFF;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(144, 224, 239, 0.45);
+}
+
+.hero-buttons .btn-secondary:hover i {
+    transform: rotate(15deg) scale(1.15);
+}
+
 /* Floating Sea Breeze Particles */
 .sea-breeze-container {
     position: absolute;
