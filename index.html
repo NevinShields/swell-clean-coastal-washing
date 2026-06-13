@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swell Clean | Coastal Luxury Pressure Washing</title>
+    <meta name="description" content="Experience coastal luxury pressure washing. We restore your beachfront home, deck, and property to pristine resort-level beauty. Serving our coast with precision and care.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Ocean Wave Transition SVG Definition -->
+    <svg style="display: none;">
+        <defs>
+            <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#023E8A" />
+                <stop offset="100%" stop-color="#0077B6" />
+            </linearGradient>
+            <linearGradient id="seafoamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#90E0EF" stop-opacity="0.8"/>
+                <stop offset="50%" stop-color="#FAFAFA" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#90E0EF" stop-opacity="0.8"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Navigation Header -->
+    <header class="main-header" id="header">
+        <!-- Resort Status Ribbon -->
+        <div class="resort-status-ribbon">
+            <div class="status-item"><i class="fa-solid fa-location-dot"></i> <span>Malibu Station</span></div>
+            <div class="status-item divider">|</div>
+            <div class="status-item"><i class="fa-solid fa-water"></i> <span>Tide: High (+3.4ft)</span></div>
+            <div class="status-item divider">|</div>
+            <div class="status-item"><i class="fa-solid fa-wind"></i> <span>Wind: 11 knots SSW</span></div>
+            <div class="status-item divider flex-grow-divider">|</div>
+            <div class="status-item status-indicator">
+                <span class="beacon-dot"></span>
+                <span class="beacon-label">SHORES: PRISTINE</span>
+            </div>
+        </div>
+
+        <div class="header-container">
+            <a href="#" class="logo" id="nav-logo">
+                <span class="logo-swell">SWELL</span>
+                <span class="logo-clean">CLEAN</span>
+                <div class="logo-wave">
+                    <svg viewBox="0 0 100 20" class="nav-wave-svg">
+                        <path d="M0,10 Q25,0 50,10 T100,10 L100,20 L0,20 Z" fill="var(--seafoam)"></path>
+                    </svg>
+                </div>
+            </a>
+            
+            <nav class="nav-links-wrapper" id="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#services" class="nav-link-item">Cabana Services<span class="hover-wave"></span></a></li>
+                    <li><a href="#before-after" class="nav-link-item">Tide Showcase<span class="hover-wave"></span></a></li>
+                    <li><a href="#why-choose" class="nav-link-item">Philosophy<span class="hover-wave"></span></a></li>
+                    <li><a href="#sand-experience" class="nav-link-item">The Shore<span class="hover-wave"></span></a></li>
+                    <li><a href="#reviews" class="nav-link-item">Reviews<span class="hover-wave"></span></a></li>
+                    <li><a href="#process" class="nav-link-item">Journey<span class="hover-wave"></span></a></li>
+                    <li><a href="#map" class="nav-link-item">Ports<span class="hover-wave"></span></a></li>
+                    <li><a href="#faq" class="nav-link-item">FAQ<span class="hover-wave"></span></a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#cta" class="btn btn-primary btn-quote-nav" id="quote-nav-btn">Get Resort Care</a>
+                <button class="mobile-toggle" aria-label="Toggle navigation menu" id="mobile-toggle-btn">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tide Scroll Wave Indicator -->
+        <div class="header-tide-indicator-bar">
+            <div class="tide-scroll-fill" id="tide-scroll-fill">
+                <!-- A repeating wave shape using SVG that glides across -->
+                <svg viewBox="0 0 100 8" preserveAspectRatio="none" class="tide-wave-svg">
+                    <path d="M0,4 Q25,0 50,4 T100,4 L100,8 L0,8 Z" fill="var(--seafoam)"></path>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg-overlay"></div>
+        <img src="assets/hero.png" alt="Luxury beachfront resort with turquoise ocean water waves breaking on clean golden sand" class="hero-bg-img" id="hero-bg">
+        
+        <!-- Sea Breeze Floating Particles Container -->
+        <div class="sea-breeze-container" id="sea-breeze-particles"></div>
+
+        <div class="hero-content-wrapper">
+            <div class="hero-text-aligner">
+                <h1 class="hero-title" id="hero-headline">
+                    Wash Away Years Of <br>
+                    <span class="text-gradient-ocean">Dirt & Grime</span>
+                </h1>
+                <p class="hero-subheadline" id="hero-subtext">
+                    Professional pressure washing and soft washing inspired by the restorative power of nature. Bringing resort-quality clean to your coastal property.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#cta" class="btn btn-primary" id="hero-quote-btn">Get Instant Quote</a>
+                    <a href="#before-after" class="btn btn-secondary" id="hero-trans-btn">View Transformations</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wave transition to next section -->
+        <div class="wave-transition-bottom">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="wave-divider-svg">
+                <path d="M0,32L120,42.7C240,53,480,75,720,74.7C960,75,1200,53,1320,42.7L1440,32L1440,120L1320,120C1200,120,960,120,720,120C480,120,240,120,120,120L0,120Z" fill="var(--soft-sand)"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Trust Bar (Driftwood Signs) -->
+    <section class="trust-bar-section" id="trust-bar">
+        <div class="trust-bar-container">
+            <div class="driftwood-sign" id="trust-sign-1">
+                <div class="wood-texture-overlay"></div>
+                <div class="driftwood-content">
+                    <i class="fa-solid fa-star coral-color"></i>
+                    <span>5-Star Rated Guest Service</span>
+                </div>
+            </div>
+            <div class="driftwood-sign" id="trust-sign-2">
+                <div class="wood-texture-overlay"></div>
+                <div class="driftwood-content">
+                    <i class="fa-solid fa-shield-halved seafoam-color"></i>
+                    <span>Fully Insured & Certified</span>
+                </div>
+            </div>
+            <div class="driftwood-sign" id="trust-sign-3">
+                <div class="wood-texture-overlay"></div>
+                <div class="driftwood-content">
+                    <i class="fa-solid fa-house-chimney-window palm-color"></i>
+                    <span>Family Owned & Operated</span>
+                </div>
+            </div>
+            <div class="driftwood-sign" id="trust-sign-4">
+                <div class="wood-texture-overlay"></div>
+                <div class="driftwood-content">
+                    <i class="fa-solid fa-circle-check coral-color"></i>
+                    <span>Satisfaction Guaranteed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Beach Cabanas) -->
+    <section class="services-section" id="services">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <span class="section-tag font-alt">Luxury Care Systems</span>
+                <h2 class="section-title">Resort Service Cabanas</h2>
+                <div class="decorator-line"></div>
+                <p class="section-desc">
+                    Just as tidepools refresh the coast, our signature soft-washing and high-pressure cleaning restore your property's original splendor.
+                </p>
+            </div>
+
+            <div class="cabana-grid">
+                <!-- House Washing Cabana -->
+                <div class="cabana-card" id="cabana-house">
+                    <div class="cabana-roof"></div>
+                    <div class="cabana-curtains"></div>
+                    <div class="cabana-body">
+                        <div class="cabana-water-wash-effect"></div>
+                        <div class="cabana-icon">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </div>
+                        <h3>Coastal House Washing</h3>
+                        <p>Gentle low-pressure soft wash cleaning to remove salt spray, algae, and grime from delicate siding, stucco, and wood trim.</p>
+                        <ul class="cabana-details">
+                            <li><i class="fa-solid fa-chevron-right"></i> Stucco & HardiePlank Safe</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Low-Pressure Soft Washing</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Organic Algae Elimination</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Roof Cleaning Cabana -->
+                <div class="cabana-card" id="cabana-roof-cleaning">
+                    <div class="cabana-roof"></div>
+                    <div class="cabana-curtains"></div>
+                    <div class="cabana-body">
+                        <div class="cabana-water-wash-effect"></div>
+                        <div class="cabana-icon">
+                            <i class="fa-solid fa-circle-chevron-up"></i>
+                        </div>
+                        <h3>Tile & Roof Restoration</h3>
+                        <p>Specialized treatments targeting dark streaks and organic growth, extending shingle and tile lifespan without high pressure.</p>
+                        <ul class="cabana-details">
+                            <li><i class="fa-solid fa-chevron-right"></i> Black Streak Removal</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Eco-Friendly Soft Solution</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Tile & Shingle Protective Care</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Concrete Cleaning Cabana -->
+                <div class="cabana-card" id="cabana-concrete">
+                    <div class="cabana-roof"></div>
+                    <div class="cabana-curtains"></div>
+                    <div class="cabana-body">
+                        <div class="cabana-water-wash-effect"></div>
+                        <div class="cabana-icon">
+                            <i class="fa-solid fa-road"></i>
+                        </div>
+                        <h3>Driveway & Concrete Clean</h3>
+                        <p>High-powered clean lines to scour deep-set dirt, oil spills, moss, and beach sand from driveways, resort walkways, and patios.</p>
+                        <ul class="cabana-details">
+                            <li><i class="fa-solid fa-chevron-right"></i> Oil Stain Treatments</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> High-PSI Rotary Cleaning</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Long-Lasting Seal Protection</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Gutter Cleaning Cabana -->
+                <div class="cabana-card" id="cabana-gutter">
+                    <div class="cabana-roof"></div>
+                    <div class="cabana-curtains"></div>
+                    <div class="cabana-body">
+                        <div class="cabana-water-wash-effect"></div>
+                        <div class="cabana-icon">
+                            <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                        </div>
+                        <h3>Resort Gutter Cleansing</h3>
+                        <p>Full interior debris clearance and exterior facade brightening to prevent water pooling and sustain pristine coastal drainage.</p>
+                        <ul class="cabana-details">
+                            <li><i class="fa-solid fa-chevron-right"></i> Inside Out Gutter Flush</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Downspout Testing</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Exterior Face Brightening</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Deck Cleaning Cabana -->
+                <div class="cabana-card" id="cabana-deck">
+                    <div class="cabana-roof"></div>
+                    <div class="cabana-curtains"></div>
+                    <div class="cabana-body">
+                        <div class="cabana-water-wash-effect"></div>
+                        <div class="cabana-icon">
+                            <i class="fa-solid fa-dharmachakra"></i>
+                        </div>
+                        <h3>Boardwalk & Deck Washing</h3>
+                        <p>Preserves rich wooden grains and composite structures. We remove slippery algae, salt oxidation, and dirt layers safely.</p>
+                        <ul class="cabana-details">
+                            <li><i class="fa-solid fa-chevron-right"></i> Teak & Ipe Hardwood Care</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Composite Deck Soft Wash</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Algae Slip Prevention</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Commercial Washing Cabana -->
+                <div class="cabana-card" id="cabana-commercial">
+                    <div class="cabana-roof"></div>
+                    <div class="cabana-curtains"></div>
+                    <div class="cabana-body">
+                        <div class="cabana-water-wash-effect"></div>
+                        <div class="cabana-icon">
+                            <i class="fa-solid fa-hotel"></i>
+                        </div>
+                        <h3>Commercial & Resort Clean</h3>
+                        <p>Scheduled property maintenance packages for beach clubs, seaside storefronts, resort complexes, parking structures, and hotels.</p>
+                        <ul class="cabana-details">
+                            <li><i class="fa-solid fa-chevron-right"></i> Flexible Off-Hours Scheduling</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Multi-Unit Building Care</li>
+                            <li><i class="fa-solid fa-chevron-right"></i> Regulatory Water Management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wave Transition SVG -->
+        <div class="wave-transition-bottom white-foam-fill">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="wave-divider-svg">
+                <path d="M0,64L80,58.7C160,53,320,43,480,48C640,53,800,75,960,80C1120,85,1280,75,1360,69.3L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="var(--white-foam)"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Before & After Gallery -->
+    <section class="before-after-section" id="before-after">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <span class="section-tag font-alt">Visual Proof</span>
+                <h2 class="section-title text-gradient-ocean">Tide Changes Everything</h2>
+                <div class="decorator-line"></div>
+                <p class="section-desc dark-text">
+                    Drag the slider to see how our premium washing sweeps away decades of harsh marine weathering, salt crust, and dark mold.
+                </p>
+            </div>
+
+            <!-- Slider Container -->
+            <div class="slider-wrapper" id="ba-slider-container">
+                <div class="before-after-slider" id="ba-slider">
+                    <!-- Before Image (Base) -->
+                    <div class="slider-image before-image-div">
+                        <img src="assets/patio-before.png" alt="Dirty coastal house patio before pressure washing" class="slider-img" id="img-before">
+                        <span class="image-label label-before">Marine Weathered (Before)</span>
+                    </div>
+                    <!-- After Image (Overlay) -->
+                    <div class="slider-image after-image-div" id="after-img-clip-div">
+                        <img src="assets/patio-after.png" alt="Clean coastal house patio after pressure washing" class="slider-img" id="img-after">
+                        <span class="image-label label-after">Resort Fresh (After)</span>
+                    </div>
+                    <!-- Handle -->
+                    <div class="slider-handle" id="ba-slider-handle">
+                        <div class="handle-line"></div>
+                        <div class="handle-button">
+                            <i class="fa-solid fa-arrows-left-right"></i>
+                            <div class="handle-ripples"></div>
+                        </div>
+                        <div class="handle-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wave Transition SVG -->
+        <div class="wave-transition-bottom sand-fill">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="wave-divider-svg">
+                <path d="M0,96L120,85.3C240,75,480,53,720,53C960,53,1200,75,1320,85.3L1440,96L1440,120L1320,120C1200,120,960,120,720,120C480,120,240,120,120,120L0,120Z" fill="var(--soft-sand)"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-section" id="why-choose">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <span class="section-tag font-alt">The Swell standard</span>
+                <h2 class="section-title">Powered By Precision. Inspired By Nature.</h2>
+                <div class="decorator-line"></div>
+            </div>
+
+            <!-- Parallax sand dunes layer wrapper -->
+            <div class="dunes-wrapper">
+                <div class="dunes-feature-grid">
+                    <div class="feature-card-dune" id="dune-card-1">
+                        <div class="dune-back"></div>
+                        <div class="dune-card-content">
+                            <div class="dune-icon-box"><i class="fa-solid fa-wind"></i></div>
+                            <h3>Safe Soft Washing</h3>
+                            <p>We use state-of-the-art low pressure systems combined with biodegradable sanitizing formulas that safely dissolve ocean grime and mold without eroding roofing or siding surfaces.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card-dune" id="dune-card-2">
+                        <div class="dune-back"></div>
+                        <div class="dune-card-content">
+                            <div class="dune-icon-box"><i class="fa-solid fa-calendar-days"></i></div>
+                            <h3>Reliable Scheduling</h3>
+                            <p>Our service runs with oceanfront resort efficiency. Accurate arrival windows, digital updates, and flexible off-hour coordination mean zero disruption to your beachside lifestyle.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card-dune" id="dune-card-3">
+                        <div class="dune-back"></div>
+                        <div class="dune-card-content">
+                            <div class="dune-icon-box"><i class="fa-solid fa-faucet-drip"></i></div>
+                            <h3>Professional Equipment</h3>
+                            <p>We deploy high-flow commercial grade rotary surface cleaners, pressure regulation wands, and onboard filtration rigs to clean deeply, evenly, and environmentally responsibly.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card-dune" id="dune-card-4">
+                        <div class="dune-back"></div>
+                        <div class="dune-card-content">
+                            <div class="dune-icon-box"><i class="fa-solid fa-certificate"></i></div>
+                            <h3>Resort Quality Guarantee</h3>
+                            <p>If you don't feel like your property looks like a fresh coastal retreat after we complete the service, we will return immediately to touch up the wash at no extra charge.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Interactive Sand Section -->
+    <section class="sand-experience-section" id="sand-experience">
+        <!-- Beneath Canvas Layer (Hidden Message) -->
+        <div class="beneath-sand-layer" id="hidden-message-layer">
+            <div class="revealed-text-container">
+                <h3 class="revealed-text-title">RESTORE YOUR PROPERTY</h3>
+                <p class="revealed-text-subtitle">CLEANER SHORES START HERE</p>
+                <div class="revealed-cta-bubble">
+                    <a href="#cta" class="revealed-btn">Request Service Now</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Canvas Simulation Layer -->
+        <canvas id="sand-canvas"></canvas>
+
+        <!-- Dynamic Wave Overlay elements that sweep across -->
+        <div class="interactive-wave-overlay" id="wave-sweep-overlay">
+            <div class="foam-edge"></div>
+            <div class="wave-body"></div>
+        </div>
+
+        <!-- Canvas Controls Float -->
+        <div class="canvas-controls-container">
+            <span class="control-tip"><i class="fa-solid fa-hand-pointer animate-hand"></i> Swipe across the shoreline to discover treasures and reveal the message!</span>
+            <button class="btn btn-secondary btn-sm" id="btn-trigger-wave">
+                <i class="fa-solid fa-water"></i> Trigger Ocean Wave
+            </button>
+        </div>
+    </section>
+
+    <!-- Reviews Section (Glass Buoys) -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <span class="section-tag font-alt">Guest Experiences</span>
+                <h2 class="section-title">Waves Of Happy Customers</h2>
+                <div class="decorator-line"></div>
+                <p class="section-desc">
+                    Here is what coastal residents and beach house property managers say about our pristine clean standards.
+                </p>
+            </div>
+
+            <div class="buoy-carousel-container">
+                <div class="buoy-grid">
+                    <!-- Buoy Review 1 -->
+                    <div class="buoy-wrapper" id="buoy-wrap-1">
+                        <div class="buoy-rope"></div>
+                        <div class="glass-buoy" id="buoy-1">
+                            <div class="buoy-gloss"></div>
+                            <div class="buoy-content">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="review-text">
+                                    "Our Malibu deck was covered in salt spray oxidation and algae. Swell Clean washed it in two hours. The wood looks brand new, and they didn't damage any plants!"
+                                </p>
+                                <div class="review-author-info">
+                                    <span class="author-name">Sarah Jenkins</span>
+                                    <span class="author-location">Malibu, CA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buoy Review 2 -->
+                    <div class="buoy-wrapper" id="buoy-wrap-2">
+                        <div class="buoy-rope"></div>
+                        <div class="glass-buoy" id="buoy-2">
+                            <div class="buoy-gloss"></div>
+                            <div class="buoy-content">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="review-text">
+                                    "Extremely professional group. We scheduled a complete roof and gutter wash for our beachfront hotel. Fast turnaround, impeccable clean, and great pricing."
+                                </p>
+                                <div class="review-author-info">
+                                    <span class="author-name">Marcus Vance</span>
+                                    <span class="author-location">Operations Mgr, Shoreline Resort</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buoy Review 3 -->
+                    <div class="buoy-wrapper" id="buoy-wrap-3">
+                        <div class="buoy-rope"></div>
+                        <div class="glass-buoy" id="buoy-3">
+                            <div class="buoy-gloss"></div>
+                            <div class="buoy-content">
+                                <div class="review-stars">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p class="review-text">
+                                    "I didn't realize how dark my stone patio had gotten until they pressure washed it. The sand-like concrete patio looks like pure white resort sand again. Amazing!"
+                                </p>
+                                <div class="review-author-info">
+                                    <span class="author-name">Dr. Elena Rostova</span>
+                                    <span class="author-location">Florida Keys</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wave Transition SVG -->
+        <div class="wave-transition-bottom deep-water-fill">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="wave-divider-svg">
+                <path d="M0,64L120,53.3C240,43,480,21,720,21C960,21,1200,43,1320,53.3L1440,64L1440,120L1320,120C1200,120,960,120,720,120C480,120,240,120,120,120L0,120Z" fill="var(--deep-water)"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- The Journey Process Section -->
+    <section class="process-section" id="process">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <span class="section-tag font-alt">Simple Steps</span>
+                <h2 class="section-title text-white">The Coastal Cleanup Journey</h2>
+                <div class="decorator-line white-line"></div>
+                <p class="section-desc text-light">
+                    Follow the stepping markers along our shoreline path. We make property renewal as breezy as a walk on the beach.
+                </p>
+            </div>
+
+            <!-- Path Timeline Layout -->
+            <div class="shoreline-path-wrapper">
+                <div class="shoreline-svg-container">
+                    <!-- A dotted winding path SVG representing the coastline -->
+                    <svg viewBox="0 0 1000 250" preserveAspectRatio="none" class="shoreline-path-svg">
+                        <path d="M 50,125 Q 250,50 500,125 T 950,125" fill="none" stroke="rgba(245, 230, 200, 0.4)" stroke-width="4" stroke-dasharray="10, 10"></path>
+                    </svg>
+                </div>
+
+                <div class="path-steps">
+                    <!-- Step 1 -->
+                    <div class="path-step-item" id="step-1">
+                        <div class="sand-marker">
+                            <span class="marker-number">01</span>
+                            <div class="marker-ripple"></div>
+                        </div>
+                        <h3>Request Quote</h3>
+                        <p>Fill out our simple estimate form. Share your property photos and receive a custom care plan and cost breakdown.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="path-step-item" id="step-2">
+                        <div class="sand-marker">
+                            <span class="marker-number">02</span>
+                            <div class="marker-ripple"></div>
+                        </div>
+                        <h3>Schedule Service</h3>
+                        <p>Pick a date. Our team will coordinate with your schedule to wash your property with zero inconvenience to you.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="path-step-item" id="step-3">
+                        <div class="sand-marker">
+                            <span class="marker-number">03</span>
+                            <div class="marker-ripple"></div>
+                        </div>
+                        <h3>We Clean</h3>
+                        <p>We arrive in our state-of-the-art washing rig, set up safety zones, soft-wash/pressure-wash all agreed areas, and clean up thoroughly.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="path-step-item" id="step-4">
+                        <div class="sand-marker">
+                            <span class="marker-number">04</span>
+                            <div class="marker-ripple"></div>
+                        </div>
+                        <h3>Enjoy The View</h3>
+                        <p>Walk around your refreshed boardwalk. Enjoy the salt spray without the grime. Experience the ultimate resort curb appeal!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformation Video Section -->
+    <section class="video-section" id="video">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <span class="section-tag font-alt">In Motion</span>
+                <h2 class="section-title">Experience The Transformation</h2>
+                <div class="decorator-line"></div>
+            </div>
+
+            <!-- Video Player Styled as Coastal Architecture Frame -->
+            <div class="architectural-video-frame">
+                <div class="window-silltop"></div>
+                <div class="window-pane">
+                    <div class="video-overlay-play" id="video-play-overlay">
+                        <img src="assets/deck-wash.png" alt="Wood deck pressure washing thumbnail" class="video-thumbnail">
+                        <div class="play-btn-circle" id="video-play-btn">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <span class="play-instruction">Watch Clean Waves Wash Grime Away (1:20)</span>
+                    </div>
+                    <!-- Custom Mock Video Canvas / Player -->
+                    <div class="video-element-container" id="mock-video-player" style="display: none;">
+                        <div class="mock-video-header">
+                            <span class="title"><i class="fa-solid fa-circle-dot red-pulse"></i> RESTORING SWELL COVE RESORT</span>
+                            <button class="close-video" id="btn-close-video"><i class="fa-solid fa-xmark"></i></button>
+                        </div>
+                        <!-- We will animate/render a canvas pressure washing clip or showcase our deck-wash image expanding/sweeping. -->
+                        <div class="video-canvas-placeholder">
+                            <canvas id="video-animation-canvas"></canvas>
+                            <div class="video-controls">
+                                <button class="vid-ctrl" id="vid-play-pause"><i class="fa-solid fa-pause"></i></button>
+                                <div class="vid-progress-bar">
+                                    <div class="vid-progress-fill" id="vid-progress"></div>
+                                </div>
+                                <span class="vid-time" id="vid-time">0:00 / 0:15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="window-sillbottom"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Area Map Section -->
+    <section class="map-section" id="map">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <span class="section-tag font-alt">Nautical Chart</span>
+                <h2 class="section-title text-gradient-ocean">Areas Along Our Coast</h2>
+                <div class="decorator-line"></div>
+                <p class="section-desc">
+                    We cruise along the shoreline to deliver premium pressure washing. Look for your port on our nautical map.
+                </p>
+            </div>
+
+            <!-- Nautical Chart Canvas/SVG Container -->
+            <div class="nautical-map-container" id="nautical-map-box">
+                <canvas id="nautical-map-canvas"></canvas>
+                <!-- Compass Rose Overlay -->
+                <div class="compass-rose-container">
+                    <svg viewBox="0 0 100 100" class="compass-rose-svg">
+                        <circle cx="50" cy="50" r="45" stroke="var(--deep-water)" stroke-width="1" fill="none" stroke-dasharray="2, 2"></circle>
+                        <path d="M50,5 L50,95 M5,50 L95,50" stroke="var(--deep-water)" stroke-width="0.5"></path>
+                        <!-- North Arrow -->
+                        <polygon points="50,5 53,40 50,47" fill="var(--coral-accent)"></polygon>
+                        <polygon points="50,5 47,40 50,47" fill="var(--deep-water)"></polygon>
+                        <!-- South Arrow -->
+                        <polygon points="50,95 53,60 50,53" fill="var(--deep-water)"></polygon>
+                        <polygon points="50,95 47,60 50,53" fill="var(--seafoam)"></polygon>
+                        <!-- East Arrow -->
+                        <polygon points="95,50 60,53 53,50" fill="var(--deep-water)"></polygon>
+                        <polygon points="95,50 60,47 53,50" fill="var(--seafoam)"></polygon>
+                        <!-- West Arrow -->
+                        <polygon points="5,50 40,53 47,50" fill="var(--deep-water)"></polygon>
+                        <polygon points="5,50 40,47 47,50" fill="var(--seafoam)"></polygon>
+                        <text x="50" y="15" font-family="'Cormorant Garamond', serif" font-size="10" font-weight="bold" text-anchor="middle" fill="var(--deep-water)">N</text>
+                    </svg>
+                </div>
+
+                <!-- Region Popups Float -->
+                <div class="map-legend">
+                    <h4>Active Ports</h4>
+                    <ul>
+                        <li><span class="legend-dot malibu-dot"></span> Malibu Cove</li>
+                        <li><span class="legend-dot santa-monica-dot"></span> Pacific Palisades</li>
+                        <li><span class="legend-dot marina-dot"></span> Marina Del Rey</li>
+                        <li><span class="legend-dot Laguna-dot"></span> Laguna Bluffs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Sea Glass Panels) -->
+    <section class="faq-section" id="faq">
+        <div class="section-container">
+            <div class="section-header text-center">
+                <span class="section-tag font-alt">Clear Answers</span>
+                <h2 class="section-title text-gradient-ocean">Frequently Asked Questions</h2>
+                <div class="decorator-line"></div>
+            </div>
+
+            <!-- Sea Glass panels for Accordion -->
+            <div class="faq-accordion-wrapper">
+                <!-- FAQ 1 -->
+                <div class="sea-glass-panel faq-item" id="faq-item-1">
+                    <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-1">
+                        <span class="faq-question">What is soft washing, and how does it differ from high-pressure washing?</span>
+                        <span class="faq-icon-arrow"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer-container" id="faq-answer-1" hidden>
+                        <div class="faq-answer-content">
+                            <p>Soft washing uses highly specialized low-pressure nozzles (similar to a strong garden hose spray) combined with eco-friendly sanitizing solutions to dissolve dark mold, mildew, algae, and salt buildup. High-pressure washing uses high-force water to scour hard surfaces like concrete. We use soft-washing for shingles, tiles, siding, and delicate wood deckings to prevent material erosion and water intrusion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="sea-glass-panel faq-item" id="faq-item-2">
+                    <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-2">
+                        <span class="faq-question">Will your cleaning products harm my lawn, palms, or beachside plants?</span>
+                        <span class="faq-icon-arrow"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer-container" id="faq-answer-2" hidden>
+                        <div class="faq-answer-content">
+                            <p>Not at all! We protect your coastal vegetation by thoroughly wetting all plants before, during, and after our cleaning process. Our formulas are fully biodegradable, and by diluting them and pre-rinsing the soil, we ensure your palm trees, tropical flowers, and beachfront grasses remain completely safe and nourished.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="sea-glass-panel faq-item" id="faq-item-3">
+                    <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-3">
+                        <span class="faq-question">How frequently should a beachfront house be pressure washed?</span>
+                        <span class="faq-icon-arrow"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer-container" id="faq-answer-3" hidden>
+                        <div class="faq-answer-content">
+                            <p>Because coastal properties are constantly exposed to heavy winds, moist ocean salt spray, and sand, they oxidize and accumulate mold much faster than inland properties. We recommend a full soft-wash clean once every 6 to 12 months. Regular house siding rinses every 3 months help prevent structural salt etching and extend paint coating lifespans.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="sea-glass-panel faq-item" id="faq-item-4">
+                    <button class="faq-trigger" aria-expanded="false" aria-controls="faq-answer-4">
+                        <span class="faq-question">Are you fully licensed and insured for high-rise beachfront properties?</span>
+                        <span class="faq-icon-arrow"><i class="fa-solid fa-plus"></i></span>
+                    </button>
+                    <div class="faq-answer-container" id="faq-answer-4" hidden>
+                        <div class="faq-answer-content">
+                            <p>Yes. Swell Clean carries comprehensive liability coverage up to $2,000,000, as well as full workers' compensation insurance. Our technicians are fully trained in roof safety protocols, multi-story scaffold setups, and environmental water runoff compliance systems.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-grid">
+                <div class="about-image-column">
+                    <div class="about-image-frame">
+                        <img src="assets/hero.png" alt="Luxury beachfront resort" class="about-main-img">
+                        <div class="about-floating-badge">
+                            <span class="badge-num">10+</span>
+                            <span class="badge-text">Years Caring <br>For Our Coast</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text-column">
+                    <span class="section-tag font-alt">Our Story</span>
+                    <h2 class="section-title">Resort-Level Craftsmanship & Care</h2>
+                    <div class="decorator-line"></div>
+                    <p class="about-lead">
+                        Founded in Malibu, Swell Clean was built on a simple vision: property care should mirror the refreshing, pristine nature of the ocean itself.
+                    </p>
+                    <p class="about-body-text">
+                        We grew up on these beaches, watching how the relentless salt mist and humidity weather the beautiful architectural designs along the coastline. We set out to create a premium pressure washing service that matches the standards of five-star luxury resorts.
+                    </p>
+                    <p class="about-body-text">
+                        By combining high-tech commercial gear with state-of-the-art soft washing solutions, we ensure that every deck, driveway, tile roof, and siding panels we spray looks brand new, preserving your home's integrity against marine erosion.
+                    </p>
+                    <div class="about-pillars">
+                        <div class="pillar-item">
+                            <i class="fa-solid fa-water-ladder"></i>
+                            <span>Eco-Friendly Sourcing</span>
+                        </div>
+                        <div class="pillar-item">
+                            <i class="fa-solid fa-anchor"></i>
+                            <span>Nautical Precision</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <img src="assets/sunset.png" alt="Malibu golden sunset over the ocean" class="cta-bg-img">
+        <div class="cta-overlay"></div>
+        <div class="section-container cta-content-wrapper">
+            <div class="cta-text-align">
+                <h2 class="cta-title">Ready For A Fresh Start?</h2>
+                <p class="cta-desc">
+                    Wash away the weathered look. Get in touch today to schedule your premium pressure washing estimate.
+                </p>
+
+                <!-- Interactive Quote/Estimate Calculator Card -->
+                <div class="quote-calculator-card">
+                    <h3>Resort Wash Estimator</h3>
+                    <form id="estimator-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="property-size">Property Size (est. Sq. Ft.)</label>
+                                <select id="property-size" required>
+                                    <option value="1500">Cozy Beach Cottage (Under 1,500 sq ft)</option>
+                                    <option value="2500" selected>Coastal Estate (1,500 - 3,000 sq ft)</option>
+                                    <option value="4500">Oceanfront Manor (3,000 - 5,000 sq ft)</option>
+                                    <option value="6000">Luxury Marina Compound (5,000+ sq ft)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="wash-service">Primary Service</label>
+                                <select id="wash-service" required>
+                                    <option value="house">House Soft Wash</option>
+                                    <option value="roof">Roof Tile Restoration</option>
+                                    <option value="concrete">Driveway & Patio Polish</option>
+                                    <option value="deck">Boardwalk & Deck Wash</option>
+                                    <option value="full" selected>Complete Coastal Renewal Package</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="client-name">Guest Name</label>
+                                <input type="text" id="client-name" placeholder="Sarah Jenkins" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="client-email">Email Address</label>
+                                <input type="email" id="client-email" placeholder="sarah@beachhouse.com" required>
+                            </div>
+                        </div>
+                        <div class="calculator-price-box">
+                            <span class="price-label">Estimated Cleaning Care:</span>
+                            <span class="price-value" id="calc-price-display">$650 - $850</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" id="btn-submit-estimate">
+                            <i class="fa-solid fa-paper-plane"></i> Book Clean Tide
+                        </button>
+                    </form>
+                    <div class="form-success-message" id="form-success" style="display: none;">
+                        <i class="fa-solid fa-circle-check success-icon"></i>
+                        <h4>Tide Scheduled!</h4>
+                        <p>Thank you. We have received your booking request. Our shore coordinator will contact you in a breeze (within 1 hour) to confirm your appointment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Premium Boardwalk) -->
+    <footer class="boardwalk-footer" id="footer">
+        <div class="boardwalk-planks">
+            <!-- Boardwalk wood planks detailing -->
+            <div class="plank"></div>
+            <div class="plank"></div>
+            <div class="plank"></div>
+            <div class="plank flex-footer-content">
+                <div class="footer-container">
+                    <div class="footer-top-grid">
+                        <div class="footer-info">
+                            <div class="logo logo-footer">
+                                <span class="logo-swell">SWELL</span>
+                                <span class="logo-clean">CLEAN</span>
+                            </div>
+                            <p class="footer-about-text">
+                                Restoring beachfront luxury properties to their original resort standard. Powered by precision pressure washing, inspired by nature.
+                            </p>
+                            <div class="footer-socials">
+                                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="footer-links-col">
+                            <h4>Navigations</h4>
+                            <ul>
+                                <li><a href="#services">Cabana Services</a></li>
+                                <li><a href="#before-after">Before & After</a></li>
+                                <li><a href="#sand-experience">Interactive Shore</a></li>
+                                <li><a href="#reviews">Reviews</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-links-col">
+                            <h4>Services</h4>
+                            <ul>
+                                <li><a href="#services">Soft House Wash</a></li>
+                                <li><a href="#services">Roof Restoration</a></li>
+                                <li><a href="#services">Driveway Cleaning</a></li>
+                                <li><a href="#services">Deck Brightening</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-contact-col">
+                            <h4>The Beach Station</h4>
+                            <p><i class="fa-solid fa-location-dot"></i> 22800 Pacific Coast Hwy, Malibu, CA 90265</p>
+                            <p><i class="fa-solid fa-phone"></i> (310) 555-WASH (9274)</p>
+                            <p><i class="fa-solid fa-envelope"></i> hello@swellclean.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-bottom">
+                        <p>&copy; 2026 Swell Clean Inc. All rights reserved. | Styled with Coastal Luxury | Designed by Antigravity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="sand-canvas.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

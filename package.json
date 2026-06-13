@@ -1,0 +1,14 @@
+{
+  "name": "swell-clean-coastal-pressure-washing",
+  "version": "1.0.0",
+  "description": "Premium Coastal Luxury Pressure Washing Website with interactive sand simulation",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.5.0"
+  }
+}
