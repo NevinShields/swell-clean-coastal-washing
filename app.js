@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initQuoteCalculator();
     initDuneScrollParallax();
     initServiceModals();
+    initTrustModals();
 });
 
 /* ==========================================================================
@@ -963,6 +964,176 @@ function initServiceModals() {
         const estimatorSection = document.getElementById('cta');
         if (estimatorSection) {
             estimatorSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+}
+
+/* ==========================================================================
+   INTERACTIVE TRUST SIGN MODALS
+   ========================================================================== */
+const trustDetails = {
+    star: {
+        title: "5-Star Guest Service Experience",
+        iconHtml: `
+            <svg viewBox="0 0 100 100" class="starfish-icon">
+                <path d="M50,5 L58,35 L88,35 L64,53 L73,83 L50,65 L27,83 L36,53 L12,35 L42,35 Z" fill="url(#starfish-grad-modal)" stroke="#E05B35" stroke-width="2.5" />
+                <circle cx="50" cy="20" r="1.5" fill="#FFF" opacity="0.8" />
+                <circle cx="50" cy="30" r="1.5" fill="#FFF" opacity="0.8" />
+                <circle cx="50" cy="40" r="2" fill="#FFF" opacity="0.8" />
+                <circle cx="50" cy="50" r="2.5" fill="#FFF" opacity="0.8" />
+                <circle cx="40" cy="38" r="1.5" fill="#FFF" opacity="0.8" />
+                <circle cx="60" cy="38" r="1.5" fill="#FFF" opacity="0.8" />
+                <circle cx="32" cy="48" r="1.5" fill="#FFF" opacity="0.8" />
+                <circle cx="68" cy="48" r="1.5" fill="#FFF" opacity="0.8" />
+                <circle cx="38" cy="62" r="1.5" fill="#FFF" opacity="0.8" />
+                <circle cx="62" cy="62" r="1.5" fill="#FFF" opacity="0.8" />
+                <circle cx="28" cy="74" r="1.5" fill="#FFF" opacity="0.8" />
+                <circle cx="72" cy="74" r="1.5" fill="#FFF" opacity="0.8" />
+                <defs>
+                    <linearGradient id="starfish-grad-modal" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FF9F68" />
+                        <stop offset="100%" stop-color="#FF5E36" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        `,
+        desc: "We treat your coastal property like a five-star luxury resort. Our trained, uniformed wash technicians provide white-glove property protection (covering all outdoor outlets, lights, keyholes, and delicate tropical plants), polite updates, and a rigorous 24-point clean-shore inspection. We guarantee the most professional and refreshing service experience on the Malibu coast."
+    },
+    shield: {
+        title: "Fully Insured & Certified Care",
+        iconHtml: `
+            <svg viewBox="0 0 100 100" class="shield-icon">
+                <path d="M50,10 L82,20 L82,50 C82,72 50,90 50,90 C50,90 18,72 18,50 L18,20 Z" fill="url(#shield-grad-modal)" stroke="#2C7DA0" stroke-width="2.5" />
+                <path d="M50,16 L76,24 L76,48 C76,66 50,81 50,81 C50,81 24,66 24,48 L24,24 Z" fill="none" stroke="#A9D6E5" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7" />
+                <path d="M50,32 C43,32 37,38 37,45 C37,55 50,68 50,68 C50,68 63,55 63,45 C63,38 57,32 50,32 Z" fill="#FFF" opacity="0.95" />
+                <path d="M50,32 L50,68" stroke="#89C2D9" stroke-width="1.5" />
+                <path d="M50,32 C47,38 46,48 50,68" stroke="#89C2D9" stroke-width="1.2" fill="none" />
+                <path d="M50,32 C53,38 54,48 50,68" stroke="#89C2D9" stroke-width="1.2" fill="none" />
+                <defs>
+                    <linearGradient id="shield-grad-modal" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#89C2D9" />
+                        <stop offset="100%" stop-color="#2A6F97" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        `,
+        desc: "Your multi-million dollar beachfront property is protected by the gold standard of care. We carry a comprehensive $2,000,000 general liability policy, full workers' compensation coverage, and specialized marine-safe certifications. We are certified SoftWash Systems technicians, ensuring we clean your roof, siding, and decks safely without using damaging high pressure."
+    },
+    hut: {
+        title: "Family Owned & Locally Grown",
+        iconHtml: `
+            <svg viewBox="0 0 100 100" class="hut-icon">
+                <path d="M20,85 L80,85" stroke="#3A5A40" stroke-width="3" stroke-linecap="round" />
+                <rect x="30" y="55" width="6" height="30" fill="#588157" rx="2" />
+                <rect x="64" y="55" width="6" height="30" fill="#588157" rx="2" />
+                <rect x="47" y="55" width="6" height="30" fill="#344E41" rx="2" />
+                <path d="M25,55 L75,55 L70,85 L30,85 Z" fill="#588157" stroke="#3A5A40" stroke-width="2" />
+                <path d="M43,85 L43,65 A7,7 0 0,1 57,65 L57,85" fill="#344E41" stroke="#3A5A40" stroke-width="2" />
+                <path d="M50,15 L85,55 L15,55 Z" fill="url(#roof-grad-modal)" stroke="#3A5A40" stroke-width="2.5" />
+                <path d="M50,15 L50,55" stroke="#344E41" stroke-width="1.5" />
+                <path d="M50,15 L32,55" stroke="#344E41" stroke-width="1.5" />
+                <path d="M50,15 L68,55" stroke="#344E41" stroke-width="1.5" />
+                <path d="M38,40 L62,40" stroke="#344E41" stroke-width="1.5" />
+                <path d="M26,48 L74,48" stroke="#344E41" stroke-width="1.5" />
+                <circle cx="50" cy="15" r="4" fill="#3A5A40" />
+                <defs>
+                    <linearGradient id="roof-grad-modal" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#A3B18A" />
+                        <stop offset="100%" stop-color="#3A5A40" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        `,
+        desc: "We are local shoreline residents who cherish our beautiful coast. We live in the community, employ local technicians, and are dedicated to preserving our beaches. That's why we use 100% biodegradable, eco-friendly, and marine-safe cleaning solutions that protect ocean life, pets, and your family's beach house."
+    },
+    guarantee: {
+        title: "100% Resort Satisfaction Guarantee",
+        iconHtml: `
+            <svg viewBox="0 0 100 100" class="check-shell-icon">
+                <path d="M55,30 C30,30 20,45 20,60 C20,75 35,85 55,85 C75,85 85,72 85,60 C85,45 75,30 55,30 Z" fill="url(#shell-orange-grad-modal)" stroke="#D06A3F" stroke-width="2.5" />
+                <path d="M55,30 C43,38 40,50 42,65" fill="none" stroke="#F4A261" stroke-width="2" />
+                <path d="M62,33 C52,43 50,55 52,72" fill="none" stroke="#F4A261" stroke-width="2" />
+                <path d="M70,38 C60,48 58,60 62,78" fill="none" stroke="#F4A261" stroke-width="2" />
+                <circle cx="35" cy="40" r="16" fill="#4AD66D" stroke="#2D6A4F" stroke-width="2.5" />
+                <path d="M28,40 L33,45 L43,35" fill="none" stroke="#FFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                <defs>
+                    <linearGradient id="shell-orange-grad-modal" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FFCDA3" />
+                        <stop offset="100%" stop-color="#E76F51" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        `,
+        desc: "Our Shoreline Promise: If you aren't completely thrilled with the brightness, cleanliness, and freshness of your property's exterior, notify us within 30 days and we will return to re-wash it immediately at no cost. If you are still not absolutely satisfied, we will refund your entire payment in full. Simple, honest, and resort-standard."
+    }
+};
+
+function initTrustModals() {
+    const modal = document.getElementById('trust-detail-modal');
+    const closeBtn = document.getElementById('trust-close-btn');
+    const overlay = document.getElementById('trust-overlay-btn');
+    const okBtn = document.getElementById('trust-modal-ok-btn');
+    
+    if (!modal || !closeBtn || !overlay || !okBtn) return;
+    
+    const iconContainer = document.getElementById('trust-modal-icon-container');
+    const titleEl = document.getElementById('trust-modal-title');
+    const descEl = document.getElementById('trust-modal-desc');
+    
+    function openTrustModal(key) {
+        const details = trustDetails[key];
+        if (!details) return;
+        
+        iconContainer.innerHTML = details.iconHtml;
+        titleEl.innerText = details.title;
+        descEl.innerText = details.desc;
+        
+        modal.classList.add('modal-active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeTrustModal() {
+        modal.classList.remove('modal-active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    
+    const boards = document.querySelectorAll('.trust-wooden-board');
+    boards.forEach(board => {
+        board.addEventListener('click', () => {
+            const key = board.id.replace('trust-board-', '');
+            openTrustModal(key);
+        });
+        board.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const key = board.id.replace('trust-board-', '');
+                openTrustModal(key);
+            }
+        });
+    });
+    
+    const log = document.getElementById('trust-board-guarantee');
+    if (log) {
+        log.addEventListener('click', () => {
+            openTrustModal('guarantee');
+        });
+        log.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openTrustModal('guarantee');
+            }
+        });
+    }
+    
+    closeBtn.addEventListener('click', closeTrustModal);
+    overlay.addEventListener('click', closeTrustModal);
+    okBtn.addEventListener('click', closeTrustModal);
+    
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('modal-active')) {
+            closeTrustModal();
         }
     });
 }

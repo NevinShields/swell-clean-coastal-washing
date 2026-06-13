@@ -117,19 +117,57 @@
         </div>
 
         <!-- Wave transition to next section -->
-        <div class="wave-transition-bottom">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none" class="wave-divider-svg">
-                <path d="M0,32L120,42.7C240,53,480,75,720,74.7C960,75,1200,53,1320,42.7L1440,32L1440,120L1320,120C1200,120,960,120,720,120C480,120,240,120,120,120L0,120Z" fill="var(--soft-sand)"></path>
+        <div class="wave-transition-bottom dynamic-surf-transition">
+            <svg viewBox="0 0 1440 140" preserveAspectRatio="none" class="wave-divider-svg">
+                <!-- Back Wave: Deep Water -->
+                <path class="surf-wave surf-back" d="M0,40 C320,90 640,-10 960,80 C1120,110 1280,70 1440,40 L1440,140 L0,140 Z" fill="rgba(2, 62, 138, 0.4)"></path>
+                <!-- Middle Wave: Soft Seafoam -->
+                <path class="surf-wave surf-middle" d="M0,60 C480,110 800,20 1120,90 C1280,105 1360,85 1440,65 L1440,140 L0,140 Z" fill="rgba(144, 224, 239, 0.5)"></path>
+                <!-- Front Wave: Clean Shore Foam -->
+                <path class="surf-wave surf-front" d="M0,80 C360,130 720,40 1080,110 C1200,120 1320,100 1440,90 L1440,140 L0,140 Z" fill="var(--white-foam)"></path>
             </svg>
         </div>
     </section>
+
+    <!-- Boardwalk Transition Row -->
+    <div class="boardwalk-transition-row">
+        <!-- Wooden Pilings / Posts -->
+        <div class="boardwalk-piling p1"></div>
+        <div class="boardwalk-piling p2"></div>
+        <div class="boardwalk-piling p3"></div>
+        <div class="boardwalk-piling p4"></div>
+        
+        <!-- Rope Railing SVG -->
+        <svg class="boardwalk-rope-svg" viewBox="0 0 1200 80" preserveAspectRatio="none">
+            <!-- Shadow core rope -->
+            <path d="M 120,30 Q 280,85 440,30 Q 600,85 760,30 Q 920,85 1080,30" fill="none" stroke="#2c1e16" stroke-width="7" stroke-linecap="round"></path>
+            <!-- Textured hemp rope -->
+            <path d="M 120,30 Q 280,85 440,30 Q 600,85 760,30 Q 920,85 1080,30" fill="none" stroke="#bfa280" stroke-width="4" stroke-linecap="round" stroke-dasharray="6,2"></path>
+        </svg>
+
+        <!-- Starfish and Shell resting on the deck -->
+        <div class="boardwalk-decor">
+            <!-- Starfish Vector SVG -->
+            <svg class="boardwalk-starfish" viewBox="0 0 100 100">
+                <path d="M50,10 L59,38 L88,38 L65,55 L74,83 L50,66 L26,83 L35,55 L12,38 L41,38 Z" fill="#ff7b54" stroke="#e05b35" stroke-width="2.5" stroke-linejoin="round"></path>
+                <circle cx="50" cy="50" r="1.5" fill="#FFF" opacity="0.8"></circle>
+                <circle cx="45" cy="45" r="1" fill="#FFF" opacity="0.8"></circle>
+                <circle cx="55" cy="45" r="1" fill="#FFF" opacity="0.8"></circle>
+            </svg>
+            <!-- Shell Vector SVG -->
+            <svg class="boardwalk-shell" viewBox="0 0 100 100">
+                <path d="M50,20 C32,20 18,36 18,60 C18,74 30,82 50,82 C70,82 82,74 82,60 C82,36 68,20 50,20 Z" fill="#f4a261" stroke="#e76f51" stroke-width="2" stroke-linejoin="round"></path>
+                <path d="M50,20 L50,82 M50,20 C42,32 38,48 38,82 M50,20 C58,32 62,48 62,82" fill="none" stroke="#e76f51" stroke-width="1.5"></path>
+            </svg>
+        </div>
+    </div>
 
     <!-- Trust Bar (Driftwood Signs) -->
     <section class="trust-bar-section" id="trust-bar">
         <div class="trust-bar-content-wrapper">
             <div class="trust-upper-row">
                 <!-- Sign 1: 5-Star -->
-                <div class="trust-wooden-board" id="trust-board-star" role="img" aria-label="5-Star Rated Guest Service">
+                <div class="trust-wooden-board" id="trust-board-star" role="button" tabindex="0" aria-label="5-Star Rated Guest Service. Click to view details.">
                     <div class="board-inner-content">
                         <!-- Starfish SVG -->
                         <svg viewBox="0 0 100 100" class="sign-vector-icon starfish-icon">
@@ -161,7 +199,7 @@
                 </div>
 
                 <!-- Sign 2: Insured -->
-                <div class="trust-wooden-board" id="trust-board-shield" role="img" aria-label="Fully Insured & Certified">
+                <div class="trust-wooden-board" id="trust-board-shield" role="button" tabindex="0" aria-label="Fully Insured & Certified. Click to view details.">
                     <div class="board-inner-content">
                         <!-- Shield SVG -->
                         <svg viewBox="0 0 100 100" class="sign-vector-icon shield-icon">
@@ -186,7 +224,7 @@
                 </div>
 
                 <!-- Sign 3: Family -->
-                <div class="trust-wooden-board" id="trust-board-hut" role="img" aria-label="Family Owned & Operated">
+                <div class="trust-wooden-board" id="trust-board-hut" role="button" tabindex="0" aria-label="Family Owned & Operated. Click to view details.">
                     <div class="board-inner-content">
                         <!-- Hut SVG -->
                         <svg viewBox="0 0 100 100" class="sign-vector-icon hut-icon">
@@ -220,7 +258,7 @@
             
             <div class="trust-lower-row">
                 <!-- Log Sign: Satisfaction Guaranteed -->
-                <div class="trust-log-board" id="trust-board-guarantee" role="img" aria-label="Satisfaction Guaranteed">
+                <div class="trust-log-board" id="trust-board-guarantee" role="button" tabindex="0" aria-label="Satisfaction Guaranteed. Click to view details.">
                     <div class="log-inner-content">
                         <!-- Shell Check SVG -->
                         <svg viewBox="0 0 100 100" class="sign-vector-icon check-shell-icon">
@@ -1076,6 +1114,29 @@
                             Book This Clean <i class="fa-solid fa-water-ladder"></i>
                         </button>
                     </div>
+                </div>
+            </div>
+    </div>
+
+    <!-- Trust Sign Detail Modal -->
+    <div id="trust-detail-modal" class="trust-modal" aria-hidden="true" role="dialog">
+        <div class="trust-modal-overlay" id="trust-overlay-btn"></div>
+        <div class="trust-modal-container">
+            <button class="trust-modal-close" aria-label="Close details" id="trust-close-btn">&times;</button>
+            <div class="trust-modal-wood-frame">
+                <div class="wood-bracket bracket-tl"></div>
+                <div class="wood-bracket bracket-tr"></div>
+                <div class="wood-bracket bracket-bl"></div>
+                <div class="wood-bracket bracket-br"></div>
+                <div class="trust-modal-content">
+                    <div id="trust-modal-icon-container" class="trust-modal-icon-box">
+                        <!-- Populated by JS -->
+                    </div>
+                    <h2 id="trust-modal-title" class="font-alt">Sign Title</h2>
+                    <div class="wood-separator"></div>
+                    <p id="trust-modal-desc"></p>
+                    
+                    <button class="btn btn-trust-close" id="trust-modal-ok-btn">Return to Shore</button>
                 </div>
             </div>
         </div>

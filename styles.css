@@ -727,9 +727,8 @@ button {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    position: relative;
+    cursor: pointer;
     transform-origin: center top;
     animation: soft-bobbing-wood 4.5s ease-in-out infinite alternate;
     transition: transform var(--transition-fast), filter var(--transition-fast);
@@ -747,12 +746,15 @@ button {
 #trust-board-hut { animation-delay: -2.8s; }
 
 .board-inner-content {
+    position: absolute;
+    top: 28%;
+    height: 44%;
+    left: 8%;
+    right: 8%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    width: 100%;
-    padding: 0 20px 28px 20px; /* offset the ropes at the top */
     box-sizing: border-box;
 }
 
@@ -825,6 +827,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     transform-origin: center center;
     animation: soft-sway-log 6s ease-in-out infinite alternate;
     transition: transform var(--transition-fast), filter var(--transition-fast);
@@ -886,7 +889,7 @@ button {
         height: 184px; /* maintain aspect ratio */
     }
     .board-inner-content {
-        padding: 0 15px 24px 15px;
+        padding: 0 15px;
     }
     .board-title { font-size: 1.15rem; }
     .board-subtitle { font-size: 0.88rem; }
@@ -922,7 +925,7 @@ button {
         height: 165px; /* maintain ratio */
     }
     .board-inner-content {
-        padding: 0 12px 20px 12px;
+        padding: 0 12px;
         gap: 8px;
     }
     .sign-vector-icon {
@@ -3140,4 +3143,373 @@ button {
     .modal-features-list {
         grid-template-columns: 1fr;
     }
+}
+
+/* ==========================================================================
+   DYNAMIC WAVE SURF & WOODEN TRUST SIGN MODALS
+   ========================================================================== */
+.dynamic-surf-transition {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.surf-wave {
+    transform-origin: center bottom;
+    animation: wave-slide 12s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+.surf-back {
+    animation-duration: 16s;
+    animation-delay: -2s;
+}
+
+.surf-middle {
+    animation-duration: 12s;
+    animation-delay: -4s;
+}
+
+.surf-front {
+    animation-duration: 8s;
+}
+
+@keyframes wave-slide {
+    0% { transform: scaleY(0.9) translateX(-25px); }
+    100% { transform: scaleY(1.1) translateX(25px); }
+}
+
+/* Boardwalk Transition Row Styling */
+.boardwalk-transition-row {
+    position: relative;
+    height: 48px;
+    background: #5c4033;
+    background-image: 
+        repeating-linear-gradient(90deg, transparent, transparent 118px, rgba(0, 0, 0, 0.22) 118px, rgba(0, 0, 0, 0.22) 120px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 2px, transparent 2px, transparent 4px),
+        linear-gradient(to bottom, #7e563a, #4a3425);
+    border-top: 5px solid #3d2c20;
+    border-bottom: 7px solid #231811;
+    z-index: 5;
+    box-shadow: 
+        0 12px 25px rgba(0, 0, 0, 0.35), 
+        inset 0 6px 8px rgba(255,255,255,0.08), 
+        inset 0 -6px 8px rgba(0,0,0,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boardwalk-piling {
+    position: absolute;
+    bottom: -1px;
+    width: 20px;
+    height: 72px;
+    background: #3e2b20;
+    background-image: linear-gradient(90deg, #2b1d16 0%, #4f3627 45%, #221711 100%);
+    border-radius: 4px 4px 0 0;
+    border: 1px solid #1c130e;
+    border-bottom: none;
+    box-shadow: 3px 0 6px rgba(0, 0, 0, 0.35);
+    z-index: 6;
+}
+
+.boardwalk-piling::before {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: -2px;
+    width: 24px;
+    height: 8px;
+    background-image: repeating-linear-gradient(45deg, #a38c73, #a38c73 2px, #7c6853 2px, #7c6853 4px);
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.boardwalk-piling.p1 { left: 10%; }
+.boardwalk-piling.p2 { left: 36.6%; }
+.boardwalk-piling.p3 { left: 63.3%; }
+.boardwalk-piling.p4 { left: 90%; }
+
+.boardwalk-rope-svg {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    pointer-events: none;
+    z-index: 7;
+}
+
+.boardwalk-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 8;
+}
+
+.boardwalk-starfish {
+    position: absolute;
+    bottom: -5px;
+    left: 38.5%;
+    width: 22px;
+    height: 22px;
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.4));
+    transform: rotate(18deg);
+    animation: gentle-star-bob 6s ease-in-out infinite alternate;
+}
+
+.boardwalk-shell {
+    position: absolute;
+    bottom: -4px;
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.4));
+    transform: rotate(-22deg);
+}
+
+@keyframes gentle-star-bob {
+    0% { transform: rotate(18deg) translateY(0); }
+    100% { transform: rotate(24deg) translateY(1px); }
+}
+
+@media (max-width: 768px) {
+    .boardwalk-transition-row {
+        height: 38px;
+    }
+    .boardwalk-piling {
+        width: 15px;
+        height: 56px;
+    }
+    .boardwalk-piling::before {
+        width: 19px;
+        height: 6px;
+    }
+    .boardwalk-rope-svg {
+        bottom: 16px;
+        height: 48px;
+    }
+    .boardwalk-starfish {
+        width: 16px;
+        height: 16px;
+    }
+    .boardwalk-shell {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+/* Trust Sign Detail Modal Styling */
+.trust-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2010;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.trust-modal.modal-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.trust-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(2, 62, 138, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: opacity 0.4s ease;
+}
+
+.trust-modal-container {
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    z-index: 2012;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trust-modal.modal-active .trust-modal-container {
+    transform: scale(1) translateY(0);
+}
+
+.trust-modal-wood-frame {
+    background: #4a3425; /* rich wood brown fallback */
+    background-image: 
+        /* vertical plank seams */
+        repeating-linear-gradient(90deg, transparent, transparent 78px, rgba(0, 0, 0, 0.25) 78px, rgba(0, 0, 0, 0.25) 80px),
+        /* horizontal wood grain simulation */
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 2px, transparent 2px, transparent 4px),
+        /* rich wood gradient */
+        linear-gradient(135deg, #604432 0%, #412c1e 100%);
+    border: 10px solid #2e1e14; /* thick wooden framing board */
+    border-radius: var(--radius-lg);
+    box-shadow: 
+        var(--shadow-lg), 
+        inset 0 0 35px rgba(0, 0, 0, 0.55), 
+        0 4px 12px rgba(0,0,0,0.4);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.trust-modal-wood-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+    box-sizing: border-box;
+    border-radius: calc(var(--radius-lg) - 10px);
+    z-index: 2;
+}
+
+/* Wood frame metal corner brackets */
+.wood-bracket {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 4px solid #1f140e; /* dark iron frame */
+    background: #3a281e; /* dark iron background */
+    z-index: 10;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+.bracket-tl { top: 12px; left: 12px; border-right: none; border-bottom: none; }
+.bracket-tr { top: 12px; right: 12px; border-left: none; border-bottom: none; }
+.bracket-bl { bottom: 12px; left: 12px; border-right: none; border-top: none; }
+.bracket-br { bottom: 12px; right: 12px; border-left: none; border-top: none; }
+
+/* Rivet in the corner of each bracket */
+.wood-bracket::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #110906; /* dark metal rivet */
+    border-radius: 50%;
+    box-shadow: inset 1px 1px 1px rgba(0,0,0,0.5), 1px 1px 1px rgba(255,255,255,0.1);
+}
+.bracket-tl::after { top: 3px; left: 3px; }
+.bracket-tr::after { top: 3px; right: 3px; }
+.bracket-bl::after { bottom: 3px; left: 3px; }
+.bracket-br::after { bottom: 3px; right: 3px; }
+
+.trust-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2.2rem;
+    color: var(--dark-wood);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2015;
+    line-height: 1;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.trust-modal-close:hover {
+    color: var(--coral-accent);
+    transform: scale(1.15) rotate(90deg);
+}
+
+.trust-modal-content {
+    background-color: #f6efe2;
+    background-image: 
+        repeating-linear-gradient(0deg, rgba(139, 90, 43, 0.03), rgba(139, 90, 43, 0.03) 1px, transparent 1px, transparent 3px),
+        linear-gradient(180deg, #fbf7f0 0%, #ecdcb9 100%);
+    border: 4px solid #8b5a2b; /* rustic wood border */
+    border-radius: var(--radius-md);
+    padding: 30px 24px;
+    box-shadow: 
+        inset 0 0 15px rgba(0, 0, 0, 0.1),
+        0 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+}
+
+.trust-modal-icon-box {
+    width: 85px;
+    height: 85px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trust-modal-icon-box svg {
+    width: 100%;
+    height: 100%;
+}
+
+.trust-modal-content h2 {
+    font-size: 1.8rem;
+    color: var(--dark-wood);
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+    font-family: var(--font-heading);
+}
+
+.wood-separator {
+    width: 80px;
+    height: 4px;
+    background-color: var(--coral-accent);
+    margin-bottom: 20px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.trust-modal-content p {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: #4A3C31;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.btn-trust-close {
+    background-color: var(--dark-wood);
+    color: var(--white-foam);
+    border: 2px solid var(--dark-wood);
+    padding: 12px 32px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-trust-close:hover {
+    background-color: var(--coral-accent);
+    border-color: var(--coral-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
 }
