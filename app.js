@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMockVideoPlayer();
     initQuoteCalculator();
     initDuneScrollParallax();
+    initServiceModals();
 });
 
 /* ==========================================================================
@@ -639,7 +640,9 @@ function initQuoteCalculator() {
         if (service === 'house') modifier = 1.0;
         if (service === 'roof') modifier = 1.3;
         if (service === 'concrete') modifier = 0.8;
+        if (service === 'gutter') modifier = 0.5;
         if (service === 'deck') modifier = 0.9;
+        if (service === 'commercial') modifier = 2.5;
         if (service === 'full') modifier = 1.6;
 
         const calculated = Math.round(base * modifier);
@@ -704,5 +707,262 @@ function initDuneScrollParallax() {
                 card.style.transform = `translateY(${Math.min(20, Math.max(-25, offset))}px)`;
             }
         });
+    });
+}
+
+/* ==========================================================================
+   INTERACTIVE SERVICE DETAILS MODAL
+   ========================================================================== */
+const serviceDetails = {
+    house: {
+        title: "Coastal House Soft Washing",
+        icon: "assets/icon-house.png",
+        frequency: "Every 6 - 12 Months",
+        duration: "2 - 4 Hours",
+        guarantee: "100% Organic Growth Neutralization",
+        desc: "Salt spray, high humidity, and coastal heat create a breeding ground for algae and mold on beach houses. Our low-pressure soft wash process utilizes biodegradable cleansers to clean and sanitize your home's siding without causing damage to delicate stucco, siding, or seals.",
+        features: [
+            "Stucco, Wood & HardiePlank Safe",
+            "Low-Pressure (under 300 PSI) soft washing",
+            "Full organic algae and salt crystal elimination",
+            "Cleans window trim, frames, and siding fascia"
+        ],
+        modifier: 1.0
+    },
+    roof: {
+        title: "Tile & Roof Restoration",
+        icon: "assets/icon-roof.png",
+        frequency: "Every 2 - 3 Years",
+        duration: "3 - 6 Hours",
+        guarantee: "3-Year Spot-Free Shoreline Guarantee",
+        desc: "Seaside roofs are highly vulnerable to black mold streaks and moss growth, which absorbs heat and damages shingle integrity. We apply our eco-friendly, low-pressure soft solution that dissolves buildup instantly and prevents organic growth from returning.",
+        features: [
+            "Clay, slate & asphalt shingle safe",
+            "Eco-friendly, chemical-soft solution spray",
+            "Deep black streak and mold neutralization",
+            "Improves roofing heat-reflection properties"
+        ],
+        modifier: 1.3
+    },
+    concrete: {
+        title: "Driveway & Concrete Clean",
+        icon: "assets/icon-concrete.png",
+        frequency: "Every 6 Months",
+        duration: "1.5 - 3 Hours",
+        guarantee: "Deep Stain & Slip Protection",
+        desc: "Foot traffic, coastal sand, tire marks, and ocean humidity leave concrete driveways dark and slippery. Using high-efficiency rotary pressure washers, we scour away embedded grime, rust, and salt stains, reviving concrete and improving slip resistance.",
+        features: [
+            "High-PSI rotary surface cleaning",
+            "Rust, tire, and oil stain treatments",
+            "Pool decks, walkways, and patios cleared",
+            "Optional post-wash sealant protective barrier"
+        ],
+        modifier: 0.8
+    },
+    gutter: {
+        title: "Resort Gutter Cleansing",
+        icon: "assets/icon-gutter.png",
+        frequency: "Every 6 Months",
+        duration: "1 - 2 Hours",
+        guarantee: "Perfect Flow & Brightness Guarantee",
+        desc: "Clogged gutters lead to water overflow, which can erode coastal foundations and damage your fascia boards. We clear out all debris, test downspout drainage to ensure smooth water flow, and gently wash the exterior faces of your gutters to restore their resort appearance.",
+        features: [
+            "Inside out gutter debris extraction",
+            "Downspout flush and flow inspection",
+            "Bracket and joint structural check",
+            "Exterior face whitening (tiger stripe removal)"
+        ],
+        modifier: 0.5
+    },
+    deck: {
+        title: "Boardwalk & Deck Washing",
+        icon: "assets/icon-deck.png",
+        frequency: "Every 6 - 12 Months",
+        duration: "2 - 4 Hours",
+        guarantee: "Splinter-Free Soft Scour",
+        desc: "Whether you have natural Brazilian Ipe, tropical teak, or modern composite decking, our specialized soft washing keeps beach boardwalks and sun decks splinter-free, non-slippery, and gorgeous. We remove slippery black algae and gray wood oxidation safely.",
+        features: [
+            "Teak, Ipe & Redwood specialty soft wash",
+            "Composite deck (Trex) color brightening",
+            "Slippery algae and spore removal",
+            "Prep for staining, sealing, or oil treatments"
+        ],
+        modifier: 0.9
+    },
+    commercial: {
+        title: "Commercial & Resort Clean",
+        icon: "assets/icon-commercial.png",
+        frequency: "Quarterly or Monthly Contracts",
+        duration: "Varies (Off-hours available)",
+        guarantee: "Commercial Resort Standard Assurance",
+        desc: "We understand that hospitality and commercial property appearances directly impact the guest experience. Our crews work during off-hours to wash beach clubs, hotels, and retail centers quietly and efficiently, complying with local water runoff regulations.",
+        features: [
+            "Flexible off-hours & night shifts scheduled",
+            "High-capacity building siding & parking lot wash",
+            "Reclaim water systems and compliance checked",
+            "Detailed multi-unit scheduling & reporting"
+        ],
+        modifier: 2.5
+    }
+};
+
+function initServiceModals() {
+    const modal = document.getElementById('service-detail-modal');
+    const cards = document.querySelectorAll('.cabana-card');
+    const closeBtn = document.getElementById('modal-close-btn');
+    const overlay = document.getElementById('modal-overlay-btn');
+    
+    if (!modal || !closeBtn || !overlay) return;
+    
+    // Modal Element references
+    const modalIcon = document.getElementById('modal-service-icon');
+    const modalDuration = document.getElementById('modal-duration');
+    const modalFrequency = document.getElementById('modal-frequency');
+    const modalGuarantee = document.getElementById('modal-guarantee');
+    const modalTitle = document.getElementById('modal-service-title');
+    const modalDesc = document.getElementById('modal-service-desc');
+    const modalFeaturesList = document.getElementById('modal-features-list');
+    const modalSqftSlider = document.getElementById('modal-sqft-slider');
+    const modalSqftDisplay = document.getElementById('modal-slider-sqft-display');
+    const modalEstimatedPrice = document.getElementById('modal-estimated-price');
+    const modalBookBtn = document.getElementById('modal-book-btn');
+    
+    let currentServiceKey = null;
+    
+    function openModal(serviceKey) {
+        const details = serviceDetails[serviceKey];
+        if (!details) return;
+        
+        currentServiceKey = serviceKey;
+        
+        // Populate modal data
+        modalIcon.src = details.icon;
+        modalIcon.alt = details.title;
+        modalDuration.innerText = details.duration;
+        modalFrequency.innerText = details.frequency;
+        modalGuarantee.innerText = details.guarantee;
+        modalTitle.innerText = details.title;
+        modalDesc.innerText = details.desc;
+        
+        // Populate features list
+        modalFeaturesList.innerHTML = '';
+        details.features.forEach(feat => {
+            const li = document.createElement('li');
+            li.innerText = feat;
+            modalFeaturesList.appendChild(li);
+        });
+        
+        // Reset slider and run initial calculation
+        modalSqftSlider.value = 2500;
+        updateSliderEstimate();
+        
+        // Open modal
+        modal.classList.add('modal-active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Lock page scroll
+    }
+    
+    function closeModal() {
+        modal.classList.remove('modal-active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = ''; // Restore page scroll
+    }
+    
+    function updateSliderEstimate() {
+        if (!currentServiceKey) return;
+        const details = serviceDetails[currentServiceKey];
+        const sqft = parseInt(modalSqftSlider.value);
+        
+        // Update slider value label
+        modalSqftDisplay.innerText = sqft.toLocaleString() + ' sq ft';
+        
+        // Base price scale by sizing cottage (1000 sq ft) to compound (6000 sq ft)
+        let base = 250;
+        if (sqft <= 1500) {
+            base = 250 + (sqft - 1000) * (230 / 500); // interpolates between 250 and 480
+        } else if (sqft <= 2500) {
+            base = 480 + (sqft - 1500) * (120 / 1000); // 480 to 600
+        } else if (sqft <= 4500) {
+            base = 600 + (sqft - 2500) * (350 / 2000); // 600 to 950
+        } else {
+            base = 950 + (sqft - 4500) * (550 / 1500); // 950 to 1500
+        }
+        
+        const calculated = Math.round(base * details.modifier);
+        const low = Math.round(calculated * 0.9);
+        const high = Math.round(calculated * 1.15);
+        
+        modalEstimatedPrice.innerText = `$${low} - $${high}`;
+    }
+    
+    // Attach click event to cards
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const serviceKey = card.getAttribute('data-service');
+            if (serviceKey) {
+                openModal(serviceKey);
+            }
+        });
+        
+        // Keyboard support
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const serviceKey = card.getAttribute('data-service');
+                if (serviceKey) {
+                    openModal(serviceKey);
+                }
+            }
+        });
+    });
+    
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+    
+    // Close on Escape key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('modal-active')) {
+            closeModal();
+        }
+    });
+    
+    // Update estimate when slider moves
+    modalSqftSlider.addEventListener('input', updateSliderEstimate);
+    
+    // Modal Book Button connects to main quote form
+    modalBookBtn.addEventListener('click', () => {
+        closeModal();
+        
+        // 1. Find service selector in main form
+        const serviceSelect = document.getElementById('wash-service');
+        const sizeSelect = document.getElementById('property-size');
+        
+        if (serviceSelect) {
+            serviceSelect.value = currentServiceKey;
+            const event = new Event('change');
+            serviceSelect.dispatchEvent(event);
+        }
+        
+        // 2. Select matching size in main form
+        if (sizeSelect) {
+            const sqft = parseInt(modalSqftSlider.value);
+            if (sqft < 1800) {
+                sizeSelect.value = "1500";
+            } else if (sqft < 3500) {
+                sizeSelect.value = "2500";
+            } else if (sqft < 5000) {
+                sizeSelect.value = "4500";
+            } else {
+                sizeSelect.value = "6000";
+            }
+            const event = new Event('change');
+            sizeSelect.dispatchEvent(event);
+        }
+        
+        // 3. Scroll to cta/estimator section
+        const estimatorSection = document.getElementById('cta');
+        if (estimatorSection) {
+            estimatorSection.scrollIntoView({ behavior: 'smooth' });
+        }
     });
 }

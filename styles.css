@@ -763,9 +763,10 @@ button {
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 480px;
+    height: 520px;
     border: 1px solid rgba(144, 224, 239, 0.15);
     transition: all var(--transition-normal);
+    cursor: pointer;
 }
 
 /* Cabana Roof Accent */
@@ -818,7 +819,7 @@ button {
 }
 
 .cabana-body {
-    padding: 40px 30px;
+    padding: 35px 30px 25px 30px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -846,27 +847,72 @@ button {
 .cabana-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
-    border-color: var(--seafoam);
+    border-color: var(--ocean-blue);
 }
 
 .cabana-icon {
-    font-size: 2.2rem;
-    color: var(--ocean-blue);
-    margin-bottom: 24px;
-    display: inline-block;
+    width: 65px;
+    height: 65px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(144, 224, 239, 0.2) 0%, rgba(2, 62, 138, 0.05) 100%);
+    border: 1.5px solid rgba(144, 224, 239, 0.4);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 119, 182, 0.06);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+}
+
+.cabana-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+.cabana-card:hover .cabana-icon {
+    transform: scale(1.1) rotate(4deg);
+    border-color: var(--ocean-blue);
+    background: linear-gradient(135deg, rgba(144, 224, 239, 0.35) 0%, rgba(2, 62, 138, 0.1) 100%);
 }
 
 .cabana-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 16px;
+    font-size: 1.35rem;
+    margin-bottom: 12px;
     color: var(--deep-water);
 }
 
 .cabana-card p {
-    font-size: 0.95rem;
-    color: #666666;
-    margin-bottom: 24px;
+    font-size: 0.9rem;
+    color: #555555;
+    margin-bottom: 16px;
     flex-grow: 1;
+    line-height: 1.5;
+}
+
+.cabana-action {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ocean-blue);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition-fast);
+}
+
+.cabana-action i {
+    transition: transform var(--transition-fast);
+}
+
+.cabana-card:hover .cabana-action {
+    color: var(--coral-accent);
+}
+
+.cabana-card:hover .cabana-action i {
+    transform: translateX(4px);
 }
 
 .cabana-details {
@@ -2468,6 +2514,436 @@ button {
     }
     
     .footer-top-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   INTERACTIVE SERVICE DETAIL MODAL
+   ========================================================================== */
+.service-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.service-modal.modal-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.service-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(2, 62, 138, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: opacity 0.4s ease;
+}
+
+.service-modal-container {
+    background-color: var(--white-foam);
+    width: 90%;
+    max-width: 960px;
+    max-height: 90vh;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(144, 224, 239, 0.3);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 2002;
+    overflow-y: auto;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    scrollbar-width: thin;
+    scrollbar-color: var(--driftwood-light) transparent;
+}
+
+.service-modal.modal-active .service-modal-container {
+    transform: scale(1) translateY(0);
+}
+
+.service-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 2.2rem;
+    color: var(--deep-water);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2005;
+    line-height: 1;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.service-modal-close:hover {
+    color: var(--coral-accent);
+    transform: scale(1.15) rotate(90deg);
+}
+
+.service-modal-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 40px;
+    padding: 50px 40px;
+}
+
+/* Modal Left Column Styling */
+.service-modal-left {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    border-right: 1px solid rgba(144, 224, 239, 0.2);
+    padding-right: 40px;
+}
+
+.modal-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, rgba(144, 224, 239, 0.2) 0%, rgba(2, 62, 138, 0.05) 100%);
+    border: 1px solid rgba(144, 224, 239, 0.2);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 119, 182, 0.05);
+}
+
+.modal-image-container img {
+    height: 85%;
+    width: auto;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    animation: float-badge 6s ease-in-out infinite;
+}
+
+.modal-water-wash-overlay {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(144, 224, 239, 0) 0%, rgba(144, 224, 239, 0.2) 50%, rgba(250, 250, 250, 0) 100%);
+    pointer-events: none;
+    animation: wave-wash-overlay 8s linear infinite;
+}
+
+@keyframes wave-wash-overlay {
+    0% { left: -100%; }
+    30% { left: 100%; }
+    100% { left: 100%; }
+}
+
+@keyframes float-badge {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.service-badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.service-badge {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--deep-water);
+    background-color: rgba(144, 224, 239, 0.25);
+    border: 1px solid rgba(144, 224, 239, 0.4);
+    padding: 8px 16px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.service-badge i {
+    color: var(--ocean-blue);
+}
+
+.service-guarantee-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background: linear-gradient(135deg, rgba(255, 123, 84, 0.08) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border: 1.5px dashed rgba(255, 123, 84, 0.3);
+    padding: 20px;
+    border-radius: var(--radius-md);
+}
+
+.service-guarantee-box i {
+    font-size: 1.8rem;
+    color: var(--coral-accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.service-guarantee-box h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--deep-water);
+    margin-bottom: 5px;
+    font-family: var(--font-body);
+}
+
+.service-guarantee-box p {
+    font-size: 0.85rem;
+    color: #666666;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+/* Modal Right Column Styling */
+.service-modal-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-tag {
+    font-size: 0.85rem;
+    color: var(--coral-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.service-modal-right h2 {
+    font-size: 2.2rem;
+    color: var(--deep-water);
+    margin-bottom: 15px;
+}
+
+.modal-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555555;
+    margin-bottom: 25px;
+}
+
+.modal-details-list-container {
+    margin-bottom: 30px;
+}
+
+.modal-details-list-container h3 {
+    font-size: 1.1rem;
+    color: var(--deep-water);
+    margin-bottom: 12px;
+    font-family: var(--font-body);
+    font-weight: 700;
+}
+
+.modal-features-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+}
+
+.modal-features-list li {
+    font-size: 0.88rem;
+    color: #555555;
+    position: relative;
+    padding-left: 20px;
+    line-height: 1.4;
+}
+
+.modal-features-list li::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--palm-green);
+    font-size: 0.8rem;
+}
+
+/* Dynamic pricing estimator styling */
+.modal-pricing-estimator {
+    background-color: var(--white-foam);
+    border-radius: var(--radius-md);
+    border: 1.5px solid rgba(144, 224, 239, 0.3);
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0, 119, 182, 0.04);
+}
+
+.estimator-header {
+    margin-bottom: 20px;
+}
+
+.estimator-header h3 {
+    font-size: 1.1rem;
+    color: var(--deep-water);
+    margin-bottom: 4px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.estimator-header h3 i {
+    color: var(--ocean-blue);
+}
+
+.estimator-subtitle {
+    font-size: 0.78rem;
+    color: #888888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-slider-group {
+    margin-bottom: 20px;
+}
+
+.slider-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--driftwood);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Custom range slider input styling */
+.modal-range-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: #e3edf2;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+.modal-range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--coral-accent);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255, 123, 84, 0.4);
+    transition: transform 0.1s ease;
+    border: 2px solid var(--white-foam);
+}
+
+.modal-range-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+.modal-range-slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--coral-accent);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(255, 123, 84, 0.4);
+    transition: transform 0.1s ease;
+    border: 2px solid var(--white-foam);
+}
+
+.modal-range-slider::-moz-range-thumb:hover {
+    transform: scale(1.15);
+}
+
+.slider-current-val {
+    font-size: 0.9rem;
+    color: var(--deep-water);
+    text-align: center;
+}
+
+.slider-current-val strong {
+    color: var(--ocean-blue);
+}
+
+.modal-pricing-display {
+    border-top: 1px solid rgba(144, 224, 239, 0.2);
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price-label {
+    font-size: 0.85rem;
+    color: #666666;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.price-val {
+    font-size: 2.2rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--ocean-blue);
+    line-height: 1.2;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+}
+
+.price-disclaimer {
+    font-size: 0.72rem;
+    color: #999999;
+    text-align: center;
+}
+
+.btn-modal-action {
+    width: 100%;
+    padding: 16px 28px;
+    font-size: 1.05rem;
+    border-radius: var(--radius-md);
+    box-shadow: 0 6px 20px rgba(0, 119, 182, 0.15);
+}
+
+/* Modal Responsive Settings */
+@media (max-width: 900px) {
+    .service-modal-content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 30px;
+    }
+    
+    .service-modal-left {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid rgba(144, 224, 239, 0.2);
+        padding-bottom: 30px;
+        align-items: center;
+    }
+    
+    .modal-image-container {
+        height: 200px;
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .service-modal-right h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-features-list {
         grid-template-columns: 1fr;
     }
 }
